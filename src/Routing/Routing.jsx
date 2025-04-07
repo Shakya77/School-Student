@@ -1,14 +1,16 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from '../Pages/Home';
-import { useState } from 'react';
+import Landing from '../Pages/Landing';
+import Login from '../Pages/Guest/Login';
+import ForgotPassword from '../Pages/Guest/ForgotPassword';
 
 export default function Routing() {
-    const [loggedIn, setLoggedIn] = useState(true);
 
     return (
         <Router>
             <Routes>
-                <Route path="/" element={Home} />
+                <Route path="/" element={<Landing />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/forgot" element={<ForgotPassword />} />
             </Routes>
         </Router>
     )
