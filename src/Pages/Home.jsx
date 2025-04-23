@@ -10,18 +10,11 @@ export default function Home() {
 
     return (
         <section className="py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden h-screen flex items-center justify-center">
-            {/* Background overlays */}
-            <div className="absolute inset-0 bg-grey/5 dark:bg-lightblack/20 -z-10"></div>
-            <div className="absolute inset-0 -z-20">
-                <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-yellow/10 dark:bg-yellow/5 rounded-bl-full"></div>
-                <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-lightgreen/10 dark:bg-lightgreen/5 rounded-tr-full"></div>
-            </div>
-
             {/* Main content */}
             <div className="max-w-7xl mx-auto">
                 <div className="lg:flex lg:items-center lg:space-x-12">
                     {/* Text content */}
-                    <div className="lg:w-1/2 mb-10 lg:mb-0 z-10">
+                    <div className="lg:w-1/2 mb-10 lg:mb-0">
                         <h1 className="text-4xl sm:text-5xl font-bold leading-tight mb-6">
                             Smart School Management System
                         </h1>
@@ -32,13 +25,13 @@ export default function Home() {
                         </p>
                         <div className="flex flex-wrap gap-4 font-medium">
                             <button onClick={handleClick} className="text-white flex items-center bg-blue-500 px-6 py-3 rounded-md shadow-lg">
-                                <Icon icon="tabler:presentation" className="mr-2" width="20" height="20" />
+                                <Icon icon="bi:person-circle" className="mr-2" width="20" height="20" />
                                 Login
                             </button>
-                            <a href="#" className=" flex items-center px-6 py-3 rounded-md border border-blue-500">
+                            <button className=" flex items-center px-6 py-3 rounded-md border border-blue-500 hover:bg-blue-500 hover:text-white">
                                 <Icon icon="tabler:info-circle" className="mr-2" width="20" height="20" />
                                 Learn More
-                            </a>
+                            </button>
                         </div>
                     </div>
 
