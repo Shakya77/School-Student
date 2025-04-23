@@ -1,6 +1,6 @@
 import { Icon } from '@iconify/react/dist/iconify.js'
-import React from 'react'
 import { NavLink, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 export default function Login() {
 
@@ -9,6 +9,12 @@ export default function Login() {
     const handleClick = () => {
         navigate("/");
     };
+
+    const title = "Login | Smart School Management System";
+
+    useEffect(() => {
+        document.title = "Login";
+    }, [title]);
 
     return (
         <div className="flex min-h-screen">

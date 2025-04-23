@@ -1,4 +1,5 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Home() {
@@ -8,7 +9,14 @@ export default function Home() {
         navigate("/login");
     };
 
+    const title = "Smart School Management System";
+
+    useEffect(() => {
+        document.title = title;
+    }, [title]);
+
     return (
+
         <section className="py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden h-screen flex items-center justify-center">
             {/* Main content */}
             <div className="max-w-7xl mx-auto">
