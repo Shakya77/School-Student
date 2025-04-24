@@ -1,6 +1,7 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import ToggleButton from "../../ToggleTheme/ToggleButton";
 
 export default function Home() {
     const navigate = useNavigate();
@@ -17,6 +18,7 @@ export default function Home() {
 
     return (
         <section className="py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden h-screen flex items-center justify-center">
+            <ToggleButton />
             {/* Main content */}
             <div className="max-w-7xl mx-auto">
                 <div className="lg:flex lg:items-center lg:space-x-12">
