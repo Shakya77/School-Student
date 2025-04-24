@@ -1,19 +1,25 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { useState, useRef, useEffect } from "react";
+import { useTheme } from "../context/ThemeContext";
 
 export default function ToggleButton() {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const dropdownRef = useRef(null);
-    const [selectedOption, setSelectedOption] = useState({
-        label: "Dropdown",
-        icon: "fa:angle-down"
-    });
+
+    const { theme, setTheme } = useTheme();
+
+    const dropdownOptions = [
+        { label: "System", icon: "fa:desktop", value: "system" },
+        { label: "Light", icon: "fa:sun-o", value: "light" },
+        { label: "Dark", icon: "fa:moon-o", value: "dark" }
+    ];
+
+    const selectedOption = dropdownOptions.find(opt => opt.value === theme);
 
     const toggleDropdown = () => {
         setIsDropdownOpen((prev) => !prev);
     };
 
-    // Close dropdown if click happens outside the dropdown
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -22,26 +28,15 @@ export default function ToggleButton() {
         };
 
         document.addEventListener("mousedown", handleClickOutside);
-
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
+        return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
-
-    const dropdownOptions = [
-        { label: "System", icon: "fa:desktop" },
-        { label: "Light", icon: "fa:sun-o" },
-        { label: "Dark", icon: "fa:moon-o" }
-    ];
-
 
     return (
         <div className="relative" ref={dropdownRef}>
             <div className="flex flex-row">
                 <button
                     onClick={toggleDropdown}
-                    className="flex items-center px-3 py-2 rounded-md border border-transparent border-black"
-                >
+                    className="flex items-center px-3 py-2 rounded-md border border-black dark:border-white">
                     {selectedOption.label}
                     <Icon
                         icon={selectedOption.icon}
@@ -53,20 +48,19 @@ export default function ToggleButton() {
             </div>
 
             {isDropdownOpen && (
-                <div className="absolute z-10 mt-1 w-32 rounded-lg shadow-xl ring-1 ring-black/5">
-                    <ul className="py-2 text-sm text-gray-700">
+                <div className="absolute z-10 mt-1 w-32 rounded-lg shadow-xl ring-1 ring-black/5 bg-white dark:bg-gray-800">
+                    <ul className="py-2 text-sm text-black dark:text-white">
                         {dropdownOptions.map((option) => (
-                            <li key={option.label}>
+                            <li key={option.value}>
                                 <button
-                                    className="w-full px-4 py-2 hover:bg-gray-100"
+                                    className="w-full px-4 py-2 hover:bg-gray-600 hover:text-white text-left"
                                     onClick={() => {
-                                        setSelectedOption(option);
+                                        setTheme(option.value);
                                         setIsDropdownOpen(false);
-                                    }}
-                                >
+                                    }}>
                                     <div className="flex items-center">
-                                        <Icon icon={option.icon} className="mr-2" width="16" height="16" />
                                         {option.label}
+                                        <Icon icon={option.icon} className="ml-2" width="16" height="16" />
                                     </div>
                                 </button>
                             </li>
@@ -75,6 +69,5 @@ export default function ToggleButton() {
                 </div>
             )}
         </div>
-
     );
 }
