@@ -16,7 +16,6 @@ export default function Home() {
     }, [title]);
 
     return (
-
         <section className="py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden h-screen flex items-center justify-center">
             {/* Main content */}
             <div className="max-w-7xl mx-auto">
@@ -32,13 +31,17 @@ export default function Home() {
                             institutions.
                         </p>
                         <div className="flex flex-wrap gap-4 font-medium">
-                            <button onClick={handleClick} className="text-white flex items-center bg-blue-500 px-6 py-3 rounded-md shadow-lg">
-                                <Icon icon="bi:person-circle" className="mr-2" width="20" height="20" />
-                                Login
+                            <button
+                                onClick={handleClick}
+                                className="relative overflow-hidden flex items-center px-6 py-3 rounded-md border border-blue-500 text-blue-500 hover:text-white transition-colors duration-300 group">
+                                <span className="absolute inset-0 bg-blue-500 z-0 transform scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100"></span>
+                                <Icon icon="bi:person-circle" className="mr-2 z-10" width="20" height="20" />
+                                <span className="z-10">Login</span>
                             </button>
-                            <button className=" flex items-center px-6 py-3 rounded-md border border-blue-500 hover:bg-blue-500 hover:text-white">
-                                <Icon icon="tabler:info-circle" className="mr-2" width="20" height="20" />
-                                Learn More
+                            <button className="relative overflow-hidden flex items-center px-6 py-3 rounded-md border border-blue-500 text-blue-500 hover:text-white transition-colors duration-300 group">
+                                <span className="absolute inset-0 bg-blue-500 z-0 transform scale-x-0 origin-right transition-transform duration-500 group-hover:scale-x-100"></span>
+                                <Icon icon="tabler:info-circle" className="mr-2 z-10" width="20" height="20" />
+                                <span className="z-10">Learn More</span>
                             </button>
                         </div>
                     </div>

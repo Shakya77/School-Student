@@ -13,7 +13,7 @@ export default function Login() {
     const title = "Login | Smart School Management System";
 
     useEffect(() => {
-        document.title = "Login";
+        document.title = title;
     }, [title]);
 
     return (
@@ -76,11 +76,11 @@ export default function Login() {
                             <span className="ml-2 text-sm">Remember Me</span>
                         </label>
                     </form>
-                    <p className="text-xs text-center text-gray-500 mt-4">
+                    <p className="text-sm text-center text-gray-500 mt-4">
                         Developed by <NavLink to={"https://github.com/Shakya77"} className="text-blue-600">Bijan Shakya</NavLink>
                     </p>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
