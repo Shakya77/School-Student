@@ -22,7 +22,6 @@ function SignUpDemo() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // You can send formData to backend API here
         console.log(formData);
         setSubmitted(true);
     };
@@ -53,7 +52,7 @@ function SignUpDemo() {
                                 <input
                                     type="text"
                                     name="name"
-                                    required
+
                                     value={formData.name}
                                     onChange={handleChange}
                                     className="w-full px-4 py-3 rounded border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none"
@@ -66,7 +65,7 @@ function SignUpDemo() {
                                 <input
                                     type="email"
                                     name="email"
-                                    required
+
                                     value={formData.email}
                                     onChange={handleChange}
                                     className="w-full px-4 py-3 rounded border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none"
@@ -79,7 +78,7 @@ function SignUpDemo() {
                                 <input
                                     type="text"
                                     name="schoolName"
-                                    required
+
                                     value={formData.schoolName}
                                     onChange={handleChange}
                                     className="w-full px-4 py-3 rounded border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none"
@@ -92,7 +91,7 @@ function SignUpDemo() {
                                 <input
                                     type="tel"
                                     name="phone"
-                                    required
+
                                     value={formData.phone}
                                     onChange={handleChange}
                                     className="w-full px-4 py-3 rounded border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none"
