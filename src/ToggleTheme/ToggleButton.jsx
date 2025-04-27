@@ -36,7 +36,7 @@ export default function ToggleButton() {
             <div className="flex flex-row">
                 <button
                     onClick={toggleDropdown}
-                    className="flex items-center px-3 py-2 rounded-md border border-black dark:border-white">
+                    className="flex items-center px-3 py-2 rounded-md border border-black dark:border-white dark:text-white">
                     {selectedOption.label}
                     <Icon
                         icon={selectedOption.icon}
