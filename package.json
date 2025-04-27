@@ -2,7 +2,7 @@
   "name": "school",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://github.com/Shakya77/School-Student",
+  "homepage": "https://github.com/Shakya77/School-Student/",
   "type": "module",
   "scripts": {
     "dev": "vite",
