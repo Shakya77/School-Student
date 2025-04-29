@@ -8,6 +8,7 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <ThemeProvider>
       <Routing />
+{/*       this is the comment of the testing of the conflict */}
     </ThemeProvider>
   </StrictMode>,
 )
