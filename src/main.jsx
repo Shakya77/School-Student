@@ -8,11 +8,6 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <ThemeProvider>
       <Routing />
-      {/* <Routing /> */}
-      {/* <OnBoardingLayout /> */}
-      {/* <InOne /> */}
-      {/* <Home /> */}
-      {/* <App /> */}
     </ThemeProvider>
   </StrictMode>,
 )

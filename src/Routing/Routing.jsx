@@ -5,7 +5,7 @@ import SignUpDemo from '../Pages/SignUpDemo/SignUpDemo';
 
 export default function Routing() {
     return (
-        <BrowserRouter basename="/School-Student">
+        <BrowserRouter basename="/School-Student/">
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
