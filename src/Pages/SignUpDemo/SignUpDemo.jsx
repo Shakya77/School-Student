@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import usePostRequest from "../../customHooks/usePostRequest";
+import { Icon } from '@iconify/react/dist/iconify.js'
 
 function SignUpDemo() {
+    const navigate = useNavigate();
+
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -62,6 +65,12 @@ function SignUpDemo() {
                     </div>
                 ) : (
                     <>
+                        <button
+                            onClick={() => navigate(-1)}
+                            className="inline-block bg-blue-600 text-white px-3 py-3 rounded-full hover:bg-blue-700 transition"
+                        >
+                            <Icon icon="tabler:arrow-left" width="20" height="20" />
+                        </button>
                         <h1 className="text-3xl font-bold text-center mb-6 text-blue-700">
                             Sign Up for a Free Demo
                         </h1>
@@ -113,7 +122,7 @@ function SignUpDemo() {
                             </div>
 
                             <div>
-                                <label className="block text-gray-700 mb-1">Phone Number</label>
+                                <label className="block text-gray-700 mb-1">Phone Number (Optional)</label>
                                 <input
                                     type="number"
                                     name="phone"
