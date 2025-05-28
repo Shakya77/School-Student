@@ -21,12 +21,15 @@ export default function LeftSide() {
                 <div className="flex gap-4 font-medium ">
                     <button className="relative overflow-hidden flex items-center px-6 py-3 rounded-md border border-blue-500 text-blue-500 hover:text-white transition-colors duration-300 group">
                         <span className="absolute inset-0 bg-blue-500 -z-0 transform scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100"></span>
-                        <Icon icon="tabler:presentation" className="mr-2" width="20" height="20" />
-                        Request Demo
+                        <Icon icon="tabler:presentation" className="mr-2 z-10" width="20" height="20" />
+                        <span className="z-10">Request Demo</span>
                     </button>
-                    <button onClick={handleClick} className="flex items-center px-6 py-3 rounded-md border border-blue-500">
-                        <Icon icon="tabler:arrow-left" className="mr-2" width="20" height="20" />
-                        Back
+                    <button onClick={handleClick} className="relative overflow-hidden flex items-center px-6 py-3 rounded-md border border-blue-500 text-blue-500 hover:text-white transition-colors duration-300 group">
+                        <span className="absolute inset-0 bg-blue-500 -z-0 transform scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100"></span>
+                        <Icon icon="tabler:arrow-left" className="mr-2 z-10" width="20" height="20" />
+                        <span className="z-10">
+                            Back
+                        </span>
                     </button>
                 </div>
             </div>
