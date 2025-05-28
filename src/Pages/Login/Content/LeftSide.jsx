@@ -8,12 +8,12 @@ export default function LeftSide() {
         navigate("/");
     };
     return (
-        <div className="lg:w-1/2 flex flex-col justify-center px-10 py-16 ">
+        <div className="lg:w-1/2 lg:flex hidden flex-col justify-center px-10 py-16 ">
             <div className="max-w-xl mx-auto">
-                <h1 className="sm:text-5xl font-bold leading-tight mb-6">
+                <h1 className="sm:text-5xl font-bold leading-tight mb-6 dark:text-white">
                     Smart School Management System
                 </h1>
-                <p className="text-gray-600 mb-8">
+                <p className="font-semibold text-gray-600 mb-8">
                     A comprehensive solution designed to streamline administrative tasks,
                     enhance communication, and improve learning outcomes for educational
                     institutions.

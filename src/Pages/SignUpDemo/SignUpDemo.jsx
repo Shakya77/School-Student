@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import usePostRequest from "../../customHooks/usePostRequest";
 
 function SignUpDemo() {
     const [formData, setFormData] = useState({
@@ -10,6 +11,7 @@ function SignUpDemo() {
         message: "",
     });
 
+    const { postData, response, loading, error } = usePostRequest();
     const [submitted, setSubmitted] = useState(false);
 
     const handleChange = (e) => {
@@ -20,11 +22,27 @@ function SignUpDemo() {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(formData);
+        const apiUrl = `${import.meta.env.VITE_API_BASE_URL}/school/demo`;
+        await postData(apiUrl, formData);
         setSubmitted(true);
+        setFormData({
+            name: "",
+            email: "",
+            schoolName: "",
+            phone: "",
+            message: "",
+        });
     };
+
+    // Optional: Reset "submitted" after 5 seconds to show the form again
+    useEffect(() => {
+        if (submitted) {
+            const timer = setTimeout(() => setSubmitted(false), 5000);
+            return () => clearTimeout(timer);
+        }
+    }, [submitted]);
 
     return (
         <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
@@ -44,7 +62,15 @@ function SignUpDemo() {
                     </div>
                 ) : (
                     <>
-                        <h1 className="text-3xl font-bold text-center mb-6 text-blue-700">Sign Up for a Free Demo</h1>
+                        <h1 className="text-3xl font-bold text-center mb-6 text-blue-700">
+                            Sign Up for a Free Demo
+                        </h1>
+
+                        {loading && <p className="text-blue-600 text-center mb-4">Submitting...</p>}
+                        {error && <p className="text-red-600 text-center mb-4">Error: {error.message || error}</p>}
+                        {response && response.message && (
+                            <p className="text-green-600 text-center mb-4">{response.message}</p>
+                        )}
 
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div>
@@ -52,11 +78,11 @@ function SignUpDemo() {
                                 <input
                                     type="text"
                                     name="name"
-
                                     value={formData.name}
                                     onChange={handleChange}
                                     className="w-full px-4 py-3 rounded border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none"
                                     placeholder="Enter your full name"
+                                    required
                                 />
                             </div>
 
@@ -65,11 +91,11 @@ function SignUpDemo() {
                                 <input
                                     type="email"
                                     name="email"
-
                                     value={formData.email}
                                     onChange={handleChange}
                                     className="w-full px-4 py-3 rounded border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none"
                                     placeholder="Enter your email"
+                                    required
                                 />
                             </div>
 
@@ -78,24 +104,24 @@ function SignUpDemo() {
                                 <input
                                     type="text"
                                     name="schoolName"
-
                                     value={formData.schoolName}
                                     onChange={handleChange}
                                     className="w-full px-4 py-3 rounded border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none"
                                     placeholder="Enter your school name"
+                                    required
                                 />
                             </div>
 
                             <div>
                                 <label className="block text-gray-700 mb-1">Phone Number</label>
                                 <input
-                                    type="tel"
+                                    type="number"
                                     name="phone"
-
                                     value={formData.phone}
                                     onChange={handleChange}
-                                    className="w-full px-4 py-3 rounded border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                                    className="w-full px-4 py-3 rounded border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none no-spinner"
                                     placeholder="Enter your phone number"
+                                    required
                                 />
                             </div>
 
@@ -113,9 +139,13 @@ function SignUpDemo() {
 
                             <button
                                 type="submit"
-                                className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition"
+                                disabled={loading}
+                                className={`w-full text-white py-3 rounded-lg transition ${loading
+                                    ? "bg-blue-400 cursor-not-allowed"
+                                    : "bg-blue-600 hover:bg-blue-700"
+                                    }`}
                             >
-                                Request Demo
+                                {loading ? "Submitting..." : "Request Demo"}
                             </button>
                         </form>
                     </>
