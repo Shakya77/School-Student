@@ -1,8 +1,9 @@
 import { Icon } from '@iconify/react/dist/iconify.js'
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 export default function RightSide() {
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         loginId: '',
         password: ''
@@ -35,6 +36,12 @@ export default function RightSide() {
     return (
         <div className="w-full lg:w-1/2 bg-blue-500 flex flex-col justify-center items-center px-4">
             <div className="bg-white rounded-xl shadow-lg w-full max-w-md px-8 py-12">
+                <button
+                    onClick={() => navigate(-1)}
+                    className="sm:inline-block bg-blue-600 text-white px-3 py-3 rounded-full hover:bg-blue-700 transition lg:hidden"
+                >
+                    <Icon icon="tabler:arrow-left" width="20" height="20" />
+                </button>
                 <div className="flex flex-col items-center">
                     <img
                         src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
