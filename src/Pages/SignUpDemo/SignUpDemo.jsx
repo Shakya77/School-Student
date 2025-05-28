@@ -39,23 +39,17 @@ function SignUpDemo() {
         });
     };
 
-    // Optional: Reset "submitted" after 5 seconds to show the form again
-    useEffect(() => {
-        if (submitted) {
-            const timer = setTimeout(() => setSubmitted(false), 5000);
-            return () => clearTimeout(timer);
-        }
-    }, [submitted]);
-
     return (
         <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
             <div className="bg-white p-10 rounded-xl shadow-lg w-full max-w-2xl">
                 {submitted ? (
                     <div className="text-center">
-                        <h1 className="text-3xl font-bold text-green-600 mb-4">Thank You!</h1>
-                        <p className="text-gray-700 mb-6">
-                            Your request for a demo has been received. We'll get in touch with you shortly!
-                        </p>
+                        <h1 className="text-3xl font-bold text-green-600 mb-4">{response.header}</h1>
+                        {response && response.message && (
+                            <p className="text-gray-700 mb-6">
+                                {response.message}
+                            </p>
+                        )}
                         <NavLink
                             to={"/"}
                             className="inline-block bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition"
