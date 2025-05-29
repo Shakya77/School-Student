@@ -10,6 +10,7 @@ export default function Routing() {
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<SignUpDemo />} />
+                <Route path='/dashboard' />
             </Routes>
         </BrowserRouter>
     )
